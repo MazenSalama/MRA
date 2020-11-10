@@ -1,0 +1,452 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+  <!-- HEADER -->
+
+  <!-- header with blue background and white text -->
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5><i class="fa fa-users"></i> DETAILS</h5>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<br/>
+<br/>
+
+  <!-- Details SECTION -->
+
+  <section id="posts">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <h4>Details</h4>
+            </div>
+            <table class="table table-striped">
+              <thead class="thead-inverse">
+                <tr>
+              <!--     <th>#</th> -->
+                  <th>Fields</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in userpatients %}
+                
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Id</th>
+                                  <td>{{i.id}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Ecw_Id</th>
+                                  <td>{{i.ecw_id}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Mbi</th>
+                                  <td>{{i.mbi}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Hic</th>
+                                  <td>{{i.hic}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Subscriber_Id</th>
+                                  <td>{{i.subscriber_id}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Member_Name</th>
+                                  <td>{{i.member_name}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Lastname</th>
+                                  <td>{{i.lastname}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Firstname</th>
+                                  <td>{{i.firstname}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Dob</th>
+                                  <td>{{i.dob}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Insurance</th>
+                                  <td>{{i.insurance}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Ecw_Pcp</th>
+                                  <td>{{i.ecw_pcp}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Last_Appt_Date</th>
+                                  <td>{{i.last_appt_date}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Last_Appt_Provider_Name</th>
+                                  <td>{{i.last_appt_provider_name}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Last_Visit_Type</th>
+                                  <td>{{i.last_visit_type}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Next_Appt_Date</th>
+                                  <td>{{i.next_appt_date}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Next_Appt_Time</th>
+                                  <td>{{i.next_appt_time}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Next_Appt_Provider_Name</th>
+                                  <td>{{i.next_appt_provider_name}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Next_Appt_Provider</th>
+                                  <td>{{i.next_appt_provider}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Next_Visit_Type</th>
+                                  <td>{{i.next_visit_type}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Vos_Gis</th>
+                                  <td>{{i.vos_gis}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Assignment</th>
+                                  <td>{{i.assignment}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>New_Patient_History</th>
+                                  <td>{{i.new_patient_history}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Research_Done_Visit</th>
+                                  <td>{{i.research_done_visit}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Awe_2020</th>
+                                  <td>{{i.awe_2020}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Confirmed_Mra_Already_Captured_In_2020</th>
+                                  <td>{{i.confirmed_mra_already_captured_in_2020}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Confirmed_Mra_Not_Addressed_In_2020</th>
+                                  <td>{{i.confirmed_mra_not_addressed_in_2020}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Confirmed_Mra__Never_Captured_Addressed</th>
+                                  <td>{{i.confirmed_mra__never_captured_addressed}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Mra_Addressed_By_Pma_But_Not_Captured_By_Cms_</th>
+                                  <td>{{i.mra_addressed_by_pma_but_not_captured_by_cms_}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>True_Suspects</th>
+                                  <td>{{i.true_suspects}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Resolved_Hcc_Not_Currently_Valid</th>
+                                  <td>{{i.resolved_hcc_not_currently_valid}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Appt_Back_Check_Status</th>
+                                  <td>{{i.appt_back_check_status}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Pre_Research_Already_Cap</th>
+                                  <td>{{i.pre_research_already_cap}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Post_Research_Dx_To_Capture</th>
+                                  <td>{{i.post_research_dx_to_capture}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Post_Research_Suspects_Identified</th>
+                                  <td>{{i.post_research_suspects_identified}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Post_Appt_Total_Captured</th>
+                                  <td>{{i.post_appt_total_captured}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Pre_Proj_Cap</th>
+                                  <td>{{i.pre_proj_cap}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Post_Proj_Cap</th>
+                                  <td>{{i.post_proj_cap}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Patient_Dup_Checker_1_Rs</th>
+                                  <td>{{i.patient_dup_checker_1_rs}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Patient_Dup_Checker_2_Rs</th>
+                                  <td>{{i.patient_dup_checker_2_rs}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Pt_Dup_Checker_Key_1</th>
+                                  <td>{{i.pt_dup_checker_key_1}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Pt_Dup_Checker_Key_2</th>
+                                  <td>{{i.pt_dup_checker_key_2}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 <!-- DETAILS TABLE STARTS HERE -->
+                                <tr>
+                                  <th>Checker</th>
+                                  <td>{{i.checker}}</td>
+                                </tr>
+                <!-- DETAILS TABLE ENDS HERE -->
+
+
+
+                 
+               
+                
+              </tbody>
+              {%endfor %}
+            </table>
+          </div>
+        </div>
+        <div class="col-md-3">
+  
+          <!-- the Users Patient box -->
+          <div class="card text-center card-primary text-white mb-3">
+            <div class="card-block">
+              <h4>Patient Profile</h4>
+               {% for i in userpatients %}
+              <h4 class="display-4">
+                <i class="fa fa-user"></i> {{ i.id }}
+              </h4>
+               <p> {{i.member_name }}</p>
+              {% endfor %}
+              <a href="/" class="btn btn-sm btn-outline-secondary text-white">Back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %}
+ 

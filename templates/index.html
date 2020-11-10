@@ -1,0 +1,931 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HEADER -->
+<!-- header with blue background and white text -->
+<header id="main-header" class="py-2 bg-primary text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5><i class="fa fa-home"></i> Home </h5>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MESSAGES -->
+
+<div class="container mb-3">
+  {% with messages = get_flashed_messages(category_filter=["success"]) %}
+  {% if messages %}
+  {% for m in messages %}
+  <div class='alert alert-success mb-3' role='alert'>{{ m }}</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+</div>
+
+
+
+<!-- ACTIONS SECTION -->
+<section id="actions" class="py-4 mb-4 bg-faded">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPatientDetailsModal">
+          <i class="fa fa-plus"></i> View All Patient
+        </a>
+      </div>
+
+      <div class="col-md-3">
+        <a href="#" class="btn btn-danger btn-block" data-toggle="modal" data-target="#addPatientModal">
+          <i class="fa fa-plus"></i> Field Details
+        </a>
+      </div>
+
+
+      <div class="col-md-3">
+        <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addStatsModal">
+          <i class="fa fa-plus"></i> Patient Stats
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- PATIENTS ENTERED RESULT  SECTION -->
+<section id="posts">
+
+  <div class="container">
+    <!-- the Add User Details Begin Here -->
+    {% if pagename == 'home' %}
+
+    <form method="POST" action="/">
+      {% endif %}
+      {% if pagename == 'updatepage' %}
+
+      <form method="POST" action="/update/{{userpatient.id}}">
+        {% endif %}
+
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-5">
+            <h2>Basic Info</h2>
+            <!-- FORM FOR PATIENTS HERE -->
+            <div class="form-group">
+              <label for="ecw_id" class="form-control-label">ECW ID*</label>
+              <input type="number" class="form-control" name="ecw_id" value="{{userpatient.ecw_id}}" required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="mbi" class="form-control-label">MBI*</label>
+              <input type="number" class="form-control" name="mbi" value="{{userpatient.mbi}}" required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="hic" class="form-control-label">HIC *</label>
+              <input type="number" class="form-control" name="hic" value="{{userpatient.hic}}" required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="subscriber_id" class="form-control-label">Subscriber Id *</label>
+              <input type="text" class="form-control" name="subscriber_id" value="{{userpatient.subscriber_id}}"
+                required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="member_name" class="form-control-label">Member Name(Full Name) *</label>
+              <input type="text" class="form-control" name="member_name" value="{{userpatient.member_name}}"
+                required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="lastname" class="form-control-label">Lastname *</label>
+              <input type="text" class="form-control" name="lastname" value="{{userpatient.lastname}}" required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="firstname" class="form-control-label">Firstname*</label>
+              <input type="text" class="form-control" name="firstname" value="{{userpatient.firstname}}"
+                required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="dob" class="form-control-label">Date of Birth*</label>
+              <input type="date" class="form-control" name="dob" value="{{userpatient.dob}}" required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="insurance" class="form-control-label">Insurance*</label>
+              <input type="text" class="form-control" name="insurance" value="{{userpatient.insurance}}"
+                required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="ecw_pcp" class="form-control-label">ECW Demographic PCP</label>
+              <input type="text" class="form-control" name="ecw_pcp" value="{{userpatient.ecw_pcp}}" required="true">
+
+            </div>
+
+            <!-- FORM FOR PATIENTS ENDS HERE -->
+
+          </div>
+          <div class="col-md-5">
+            <h2>Appointment Info</h2>
+
+            <!-- FORM FOR PATIENTS HERE -->
+            <div class="form-group">
+              <label for="last_appt_date" class="form-control-label">Last Appt Date</label>
+              <input type="date" class="form-control" name="last_appt_date" value="{{userpatient.last_appt_date}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="last_appt_provider_name" class="form-control-label">Last Appointment Provider Name</label>
+              <input type="text" class="form-control" name="last_appt_provider_name"
+                value="{{userpatient.last_appt_provider_name}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="last_visit_type" class="form-control-label">Last Visit Type</label>
+              <input type="text" class="form-control" name="last_visit_type" value="{{userpatient.last_visit_type}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="next_appt_date" class="form-control-label">Next Appointment Date*</label>
+              <input type="date" class="form-control" name="next_appt_date" value="{{userpatient.next_appt_date}}"
+                required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="next_appt_time" class="form-control-label">Next Appointment Time</label>
+              <input type="time" class="form-control" name="next_appt_time" value="{{userpatient.next_appt_time}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="next_appt_provider_name" class="form-control-label">Next Appt Provider Name</label>
+              <input type="text" class="form-control" name="next_appt_provider_name"
+                value="{{userpatient.next_appt_provider_name}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="next_appt_provider" class="form-control-label">Next_Appt_Provider</label>
+              <input type="text" class="form-control" name="next_appt_provider"
+                value="{{userpatient.next_appt_provider}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="next_visit_type" class="form-control-label">Next_Visit_Type</label>
+              <input type="text" class="form-control" name="next_visit_type" value="{{userpatient.next_visit_type}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="vos_gis" class="form-control-label">VOS GIS*</label>
+              <input type="text" class="form-control" name="vos_gis" value="{{userpatient.vos_gis}}" required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="assignment" class="form-control-label">Assignment*</label>
+              <input type="text" class="form-control" name="assignment" value="{{userpatient.assignment}}"
+                required="true">
+
+            </div>
+
+
+
+            <!-- FORM FOR PATIENTS ENDS HERE -->
+
+          </div>
+        </div><!-- End of row of columns -->
+
+        <hr>
+
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-5">
+            <h2>Patient History Info</h2>
+            <!-- FORM FOR PATIENTS HERE -->
+
+            <div class="form-group">
+              <label for="new_patient_history" class="form-control-label">New Patient History</label>
+              <textarea type="text" class="form-control" name="new_patient_history"
+                value="{{userpatient.new_patient_history}}">
+                  </textarea>
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="research_done_visit" class="form-control-label">Research Done Visit*</label>
+              <input type="text" class="form-control" name="research_done_visit"
+                value="{{userpatient.research_done_visit}}" required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="awe_2020" class="form-control-label">Annual Wellness Visit*</label>
+              <input type="text" class="form-control" name="awe_2020" value="{{userpatient.awe_2020}}" required="true">
+
+            </div>
+
+            <!--
+            <div class="form-group">
+              <label for="confirmed_mra_already_captured_in_2020" class="form-control-label">Confirmed MRA Already
+                Captured In 2020*</label>
+              <input type="text" class="form-control" name="confirmed_mra_already_captured_in_2020"
+                value="{{userpatient.confirmed_mra_already_captured_in_2020}}" required="true">
+
+            </div>
+            -->
+            <!--Test-->
+            <div class="form-group">
+              <label for="confirmed_mra_already_captured_in_2020" class="form-control-label">Confirmed MRA Already
+                Captured In 2020*</label>
+              <!--
+              <input list="browsers" name="browser" id="browser" class="form-control"
+                value="{{userpatient.confirmed_mra_already_captured_in_2020}}" required="true">
+              <datalist id="browsers">
+                {% for i in icd10 %}
+                <option id={{i.d_code}} name="{{i.model}}" value="{{i.d_code}} {{i.description}} {{i.model}}">
+                  {% endfor %}
+              </datalist>
+              -->
+              <select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select form-control"
+                name="confirmed_mra_already_captured_in_2020" id="test0" onchange="pickText0()">
+                <option value=""></option>
+                {% for i in icd10 %}
+                <option>{{i.d_code}} {{i.description}} {{i.model}}</option>
+                <option id={{i.d_code}} name="{{i.model}}" value="{{i.d_code}} {{i.description}} {{i.model}}">
+                  {% endfor %}
+              </select>
+              <script>
+                $(".chosen-select").chosen({
+                  no_results_text: "Oops, nothing found!"
+                })
+              </script>
+
+            </div>
+
+
+            <div class="form-group">
+              <textarea class="form-control" name="evidence_confirmed_mra_already_captured_in_2020" id="text_test0"
+                cols="60" rows="10"></textarea>
+              <script>
+                $(".chosen-select").chosen({
+                  no_results_text: "Oops, nothing found!"
+                })
+              </script>
+              <script>
+                function pickText0() {
+                  try {
+                    var e = document.getElementById("test0");
+                    var value0 = e.options[e.selectedIndex].text;
+                    console.log('================>>>>>>>>>', value0)
+                    already_existed = document.getElementById("text_test0").value
+                    document.getElementById("text_test0").value = already_existed + '\n' + value0;
+                  }
+                  catch (err) {
+
+                    console.log('paaaaaaaaaaasssssssssss')
+                  }
+                }
+
+              </script>
+            </div>
+
+
+            <div class="form-group">
+              <label for="confirmed_mra_not_addressed_in_2020" class="form-control-label">Confirmed_MRA Not Addressed In
+                2020*</label>
+              <!--
+              <input list="browsers" name="browser" id="browser" type="text" class="form-control"
+                name="confirmed_mra_not_addressed_in_2020" value="{{userpatient.confirmed_mra_not_addressed_in_2020}}"
+                required="true">
+              <datalist id="browsers">
+                {% for i in icd10 %}
+                <option id={{i.d_code}} name="{{i.model}}" value="{{i.d_code}} {{i.description}} {{i.model}}">
+                  {% endfor %}
+              </datalist>
+              -->
+              <select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select form-control"
+                name="confirmed_mra_not_addressed_in_2020" id="test1" onchange="pickText1()" ;>
+                <option value=""></option>
+                {% for i in icd10 %}
+                <option>{{i.d_code}} {{i.description}} {{i.model}}</option>
+                <option id={{i.d_code}} name="{{i.model}}" value="{{i.d_code}} {{i.description}} {{i.model}}">
+                  {% endfor %}
+              </select>
+              <script>
+                $(".chosen-select").chosen({
+                  no_results_text: "Oops, nothing found!"
+                })
+              </script>
+
+            </div>
+
+
+
+            <div class="form-group">
+              <textarea class="form-control" name="evidence_confirmed_mra_not_addressed_in_2020" id="text_test1"
+                cols="60" rows="10"></textarea>
+              <script>
+                $(".chosen-select").chosen({
+                  no_results_text: "Oops, nothing found!"
+                })
+              </script>
+              <script>
+                function pickText1() {
+                  try {
+                    var e = document.getElementById("test1");
+                    var value0 = e.options[e.selectedIndex].text;
+                    console.log('================>>>>>>>>>', value0)
+                    already_existed = document.getElementById("text_test1").value
+                    document.getElementById("text_test1").value = already_existed + '\n' + value0;
+                  }
+                  catch (err) {
+
+                    console.log('paaaaaaaaaaasssssssssss')
+                  }
+                }
+
+              </script>
+            </div>
+
+
+
+
+            <div class="form-group">
+              <label for="confirmed_mra__never_captured_addressed" class="form-control-label">Confirmed MRA Never
+                Captured Addressed*</label>
+              <!--
+              <input list="browsers" name="browser" id="browser" type="text" class="form-control"
+                name="confirmed_mra__never_captured_addressed"
+                value="{{userpatient.confirmed_mra__never_captured_addressed}}" required="true">
+              <datalist id="browsers">
+                {% for i in icd10 %}
+                <option id={{i.d_code}} name="{{i.model}}" value="{{i.d_code}} {{i.description}} {{i.model}}">
+                  {% endfor %}
+              </datalist>
+              -->
+              <select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select form-control"
+                name="confirmed_mra__never_captured_addressed" id="test2" onchange="pickText2();">
+                <option value=""></option>
+                {% for i in icd10 %}
+                <option>{{i.d_code}} {{i.description}} {{i.model}}</option>
+                <option id={{i.d_code}} name="{{i.model}}" value="{{i.d_code}} {{i.description}} {{i.model}}">
+                  {% endfor %}
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <textarea class="form-control" name="evidence_confirmed_mra__never_captured_addressed" id="text_test2"
+                cols="60" rows="10"></textarea>
+              <script>
+                $(".chosen-select").chosen({
+                  no_results_text: "Oops, nothing found!"
+                })
+              </script>
+              <script>
+                function pickText2() {
+                  try {
+                    var e = document.getElementById("test2");
+                    var value0 = e.options[e.selectedIndex].text;
+                    console.log('================>>>>>>>>>', value0)
+                    already_existed = document.getElementById("text_test2").value
+                    document.getElementById("text_test2").value = already_existed + '\n' + value0;
+                  }
+                  catch (err) {
+
+                    console.log('paaaaaaaaaaasssssssssss')
+                  }
+                }
+
+              </script>
+            </div>
+
+
+
+
+            <div class="form-group">
+              <label for="mra_addressed_by_pma_but_not_captured_by_cms_"
+                class="form-control-label">Mra_Addressed_By_Pma_But_Not_Captured_By_Cms_*</label>
+              <!--
+              <input input list="browsers" name="browser" id="browser" type="text" class="form-control"
+                name="mra_addressed_by_pma_but_not_captured_by_cms_"
+                value="{{userpatient.mra_addressed_by_pma_but_not_captured_by_cms_}}" required="true">
+              <datalist id="browsers">
+                {% for i in icd10 %}
+                <option id={{i.d_code}} name="{{i.model}}" value="{{i.d_code}} {{i.description}} {{i.model}}">
+                  {% endfor %}
+              </datalist>
+              -->
+              <select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select form-control"
+                name="mra_addressed_by_pma_but_not_captured_by_cms_" id="test3" onchange="pickText3();">
+                <option value=""></option>
+                {% for i in icd10 %}
+                <option>{{i.d_code}} {{i.description}} {{i.model}}</option>
+                <option id={{i.d_code}} name="{{i.model}}" value="{{i.d_code}} {{i.description}} {{i.model}}">
+                  {% endfor %}
+              </select>
+              <script>
+                $(".chosen-select").chosen({
+                  no_results_text: "Oops, nothing found!"
+                })
+              </script>
+
+            </div>
+
+
+
+            <div class="form-group">
+              <textarea class="form-control" name="evidence_mra_addressed_by_pma_but_not_captured_by_cms_"
+                id="text_test3" cols="60" rows="10"></textarea>
+              <script>
+                $(".chosen-select").chosen({
+                  no_results_text: "Oops, nothing found!"
+                })
+              </script>
+              <script>
+                function pickText3() {
+                  try {
+                    var e = document.getElementById("test3");
+                    var value0 = e.options[e.selectedIndex].text;
+                    console.log('================>>>>>>>>>', value0)
+                    already_existed = document.getElementById("text_test3").value
+                    document.getElementById("text_test3").value = already_existed + '\n' + value0;
+                  }
+                  catch (err) {
+
+                    console.log('paaaaaaaaaaasssssssssss')
+                  }
+                }
+
+              </script>
+            </div>
+
+
+            <!-- TESTING
+
+            <div>
+              <select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select form-control"
+                name="test">
+                <option value=""></option>
+                {% for i in icd10 %}
+                <option>{{i.d_code}} {{i.description}} {{i.model}}</option>
+                <option id={{i.d_code}} name="{{i.model}}" value="{{i.d_code}} {{i.description}} {{i.model}}">
+                  {% endfor %}
+              </select>
+              <script>
+                $(".chosen-select").chosen({
+                  no_results_text: "Oops, nothing found!"
+                })
+              </script>
+            </div>
+
+            TESTING-->
+
+
+            <div class="form-group">
+              <label for="true_suspects" class="form-control-label">True_Suspects*</label>
+              <!--
+              <input type="text" class="form-control" name="true_suspects" value="{{userpatient.true_suspects}}"
+                required="true">
+                -->
+              <div>
+                <select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select  form-control"
+                  name="true_suspects" id="test4" onchange="pickText4();">
+                  <option value=""></option>
+                  {% for i in icd10 %}
+                  <option>{{i.d_code}} {{i.description}} {{i.model}}</option>
+
+                  {% endfor %}
+                </select>
+                <script>
+                  $(".chosen-select").chosen({
+                    no_results_text: "Oops, nothing found!"
+                  })
+                </script>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <textarea class="form-control" name="evidence_true_suspects" id="text_test4" cols="60"
+                rows="10"></textarea>
+              <script>
+                $(".chosen-select").chosen({
+                  no_results_text: "Oops, nothing found!"
+                })
+              </script>
+              <script>
+                function pickText4() {
+                  try {
+                    var e = document.getElementById("test4");
+                    var value0 = e.options[e.selectedIndex].text;
+                    console.log('================>>>>>>>>>', value0)
+                    already_existed = document.getElementById("text_test4").value
+                    document.getElementById("text_test4").value = already_existed + '\n' + value0;
+                  }
+                  catch (err) {
+
+                    console.log('paaaaaaaaaaasssssssssss')
+                  }
+                }
+
+              </script>
+            </div>
+
+
+
+            <div class="form-group">
+              <label for="resolved_hcc_not_currently_valid" class="form-control-label">Resolved HCC Not Currently
+                Valid*</label>
+              <!--
+              <input type="text" class="form-control" name="resolved_hcc_not_currently_valid"
+                value="{{userpatient.resolved_hcc_not_currently_valid}}" required="true">
+                -->
+              <select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select form-control"
+                name="resolved_hcc_not_currently_valid" id="test5" onchange="pickText5();">
+                <option value=""></option>
+                {% for i in icd10 %}
+                <option>{{i.d_code}} {{i.description}} {{i.model}}</option>
+                <option id={{i.d_code}} name="{{i.model}}" value="{{i.d_code}} {{i.description}} {{i.model}}">
+                  {% endfor %}
+              </select>
+              <script>
+                $(".chosen-select").chosen({
+                  no_results_text: "Oops, nothing found!"
+                })
+              </script>
+
+            </div>
+
+
+            <div class="form-group">
+              <textarea class="form-control" name="evidence_resolved_hcc_not_currently_valid" id="text_test5" cols="60"
+                rows="10"></textarea>
+              <script>
+                $(".chosen-select").chosen({
+                  no_results_text: "Oops, nothing found!"
+                })
+              </script>
+              <script>
+                function pickText5() {
+                  try {
+                    var e = document.getElementById("test5");
+                    var value0 = e.options[e.selectedIndex].text;
+                    console.log('================>>>>>>>>>', value0)
+                    already_existed = document.getElementById("text_test5").value
+                    document.getElementById("text_test5").value = already_existed + '\n' + value0;
+                  }
+                  catch (err) {
+
+                    console.log('paaaaaaaaaaasssssssssss')
+                  }
+                }
+
+              </script>
+            </div>
+
+
+
+
+            <div class="form-group">
+              <label for="appt_back_check_status" class="form-control-label">Appointment Back_Check_Status*</label>
+              <input type="text" class="form-control" name="appt_back_check_status"
+                value="{{userpatient.appt_back_check_status}}" required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="pre_research_already_cap" class="form-control-label">Pre_Research_Already_Cap</label>
+              <input type="text" class="form-control" name="pre_research_already_cap"
+                value="{{userpatient.pre_research_already_cap}}">
+
+            </div>
+
+
+
+            <!-- FORM FOR PATIENTS ENDS HERE -->
+          </div>
+          <div class="col-md-5">
+            <h2>Research Info</h2>
+            <!-- FORM FOR PATIENTS HERE -->
+
+
+
+            <div class="form-group">
+              <label for="post_research_dx_to_capture" class="form-control-label">Post Research Dx To Capture</label>
+              <input type="text" class="form-control" name="post_research_dx_to_capture"
+                value="{{userpatient.post_research_dx_to_capture}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="post_research_suspects_identified" class="form-control-label">Post Research Suspects
+                Identified</label>
+              <input type="text" class="form-control" name="post_research_suspects_identified"
+                value="{{userpatient.post_research_suspects_identified}}">
+
+            </div>
+            <div class="form-group">
+              <label for="post_appt_total_captured" class="form-control-label">Post Appointment Total Captured*</label>
+              <input type="text" class="form-control" name="post_appt_total_captured"
+                value="{{userpatient.post_appt_total_captured}}" required="true">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="pre_proj_cap" class="form-control-label">Pre Proj_Cap</label>
+              <input type="text" class="form-control" name="pre_proj_cap" value="{{userpatient.pre_proj_cap}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="post_proj_cap" class="form-control-label">Post Proj_Cap</label>
+              <input type="text" class="form-control" name="post_proj_cap" value="{{userpatient.post_proj_cap}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="patient_dup_checker_1_rs" class="form-control-label">Patient Dup_Checker_1_Rs</label>
+              <input type="text" class="form-control" name="patient_dup_checker_1_rs"
+                value="{{userpatient.patient_dup_checker_1_rs}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="patient_dup_checker_2_rs" class="form-control-label">Patient Dup_Checker_2_Rs</label>
+              <input type="text" class="form-control" name="patient_dup_checker_2_rs"
+                value="{{userpatient.patient_dup_checker_2_rs}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="pt_dup_checker_key_1" class="form-control-label">Pt_Dup_Checker_Key_1</label>
+              <input type="text" class="form-control" name="pt_dup_checker_key_1"
+                value="{{userpatient.pt_dup_checker_key_1}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="pt_dup_checker_key_2" class="form-control-label">Pt_Dup_Checker_Key_2</label>
+              <input type="text" class="form-control" name="pt_dup_checker_key_2"
+                value="{{userpatient.pt_dup_checker_key_2}}">
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="checker" class="form-control-label">Checker</label>
+              <input type="text" class="form-control" name="checker" value="{{userpatient.checker}}">
+
+            </div>
+
+
+
+
+            <!-- FORM FOR PATIENTS ENDS HERE -->
+          </div>
+        </div><!-- End  row of columns -->
+
+        <div class="">
+          <button class="btn btn-outline-success" type="reset">Clear</button>
+          <button class="btn btn-primary" type="submit">Submit</button>
+
+
+        </div>
+
+      </form>
+      <!-- the Add User Details Begin ENDS -->
+      <hr>
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <h4>DataBase Results</h4>
+            </div>
+            <!-- TABLE STARTS HERE -->
+            <table class="table table-striped">
+              <thead class="thead-inverse">
+                <tr>
+                  <th>#</th>
+                  <th>ECW ID</th>
+                  <th>FullName</th>
+                  <th>FirstName</th>
+                  <th>LastName</th>
+                  <th>Date of Birth</th>
+                  <!-- an empty set for the details buttons -->
+                  <th>Details</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in userpatients %}
+                <tr>
+                  <td scope="row">{{i.id}}</td>
+                  <td>{{i.ecw_id}}</td>
+                  <td>{{i.member_name}}</td>
+                  <td>{{i.firstname}}</td>
+                  <td>{{i.lastname}}</td>
+                  <td>{{i.dob}}</td>
+                  <td><a href="/details/{{ i.id }}" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i>
+                      Details</a></td>
+                  <td><a href="/update/{{ i.id }}" class="btn btn-info"> <span class="glyphicon glyphicon-remove">
+                        Edit<span></a></td>
+                  <td><a href="/delete/{{ i.id }}" class="btn btn-warning"> <span class="glyphicon glyphicon-remove">
+                        Delete<span></a></td>
+                </tr>
+
+              </tbody>
+              {%endfor %}
+            </table>
+            <!-- TABLE ENDS HERE -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Example row of columns -->
+
+      <hr>
+
+  </div> <!-- /container -->
+
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<!-- ADD PATIENTS DETAILS MODAL -->
+
+<div class="modal fade" id="addPatientDetailsModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="addPatientDetailsModalLabel">View/Delete Patients</h5>
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- VIEW ALL PATIENT AND DELETE HERE -->
+        <div class="card">
+          <div class="card-header">
+            <h4>Latest Results</h4>
+          </div>
+          <!-- TABLE STARTS HERE -->
+          <table class="table table-striped">
+            <thead class="thead-inverse">
+              <tr>
+                <th>#</th>
+                <th>ECW ID</th>
+                <th>FullName</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Date of Birth</th>
+                <!-- an empty set for the details buttons -->
+                <th>Details</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in userpatients %}
+              <tr>
+                <td scope="row">{{i.id}}</td>
+                <td>{{i.ecw_id}}</td>
+                <td>{{i.member_name}}</td>
+                <td>{{i.firstname}}</td>
+                <td>{{i.lastname}}</td>
+                <td>{{i.dob}}</td>
+                <td><a href="/details/{{ i.id }}" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i>
+                    Details</a></td>
+                <td><a href="/update/{{ i.id }}" class="btn btn-info"> <span class="glyphicon glyphicon-remove">
+                      Edit<span></a></td>
+                <td><a href="/delete/{{ i.id }}" class="btn btn-warning"> <span class="glyphicon glyphicon-remove">
+                      Delete<span></a></td>
+              </tr>
+
+            </tbody>
+            {%endfor %}
+          </table>
+          <!-- TABLE ENDS HERE -->
+        </div>
+      </div>
+
+      <!-- VIEW ALL PATIENT ENDS HERE -->
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<!-- PATIENTS STATS MODAL -->
+
+<div class="modal fade" id="addStatsModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="addStatsModalLabel">Stats</h5>
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5> Number of Patients :: {{ num_of_patients }}</h5>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIELDS DETAILS MODAL -->
+
+<div class="modal fade" id="addPatientModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="addPatientModalLabel">Field Details</h5>
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Registration App</p>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
